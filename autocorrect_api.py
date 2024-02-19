@@ -18,6 +18,8 @@ def health_check():
 def autocorrect():
     word = request.args.get('word')
 
+    print('\n\n', request.args , '\n\n')
+
     [word_prob, unique_word_list, word_freq] = pickle.load(open('autocorrect-pickle.pkl', 'rb'))
     result = ''
 
@@ -43,3 +45,7 @@ def autocorrect():
     return jsonify({
             'result': result
         })
+
+# if __name__ == "__main__":
+#     from waitress import serve
+#     serve(app, host="0.0.0.0", port=8080)
